@@ -1,33 +1,35 @@
 class Asteroids {
  PVector loc, vel;
- float sz;
+ float astrdSZ;
+ float hue;
 
  Asteroids(float tempsz){
-  sz = tempsz; 
+  astrdSZ = tempsz; 
   loc = new PVector(random(width), random(height));
-  vel = new PVector(random(-4,4), random(-4,4)); 
+  vel = new PVector(random(-4,4), random(-4,4));
+  hue = random(360); 
  }
  
- void display(){
-  fill(255);
-  ellipse(loc.x, loc.y, sz, sz); 
+ void Adisplay(){
+  fill(hue, 200, 200);
+  ellipse(loc.x, loc.y, astrdSZ, astrdSZ); 
  }
  
- void move(){
+ void Amove(){
   loc.add(vel); 
  }
  
- void wallBounce(){
-   if(loc.x + sz/2 > width){
+ void AwallBounce(){
+   if(loc.x + astrdSZ/2 > width){
     vel.x = -abs(vel.x); 
    }
-   if(loc.x - sz/2 < 0){
+   if(loc.x - astrdSZ/2 < 0){
     vel.x = abs(vel.x); 
    }
-   if(loc.y + sz/2 > height){
+   if(loc.y + astrdSZ/2 > height){
     vel.y = -abs(vel.y); 
    }
-   if(loc.y - sz/2 < 0){
+   if(loc.y - astrdSZ/2 < 0){
     vel.y = abs(vel.y); 
    }
  }
