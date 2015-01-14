@@ -26,9 +26,9 @@ for(int i = 0; i < asteroids.length; i++){
 }
 
 //drawing the ship
-player.Rdisplay();
+player.shipDisplay();
 //update the rotation of the rocketship every frame
-player.Rupdate();
+player.shipUpdate();
 
 //drawing the bullets
  if(keyPressed){

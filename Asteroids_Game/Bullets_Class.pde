@@ -1,6 +1,6 @@
 class Fire {
   PVector loc, vel;
-  float sz = 10;
+  float bulletSZ = 10;
   int bullet = 1;
   
   Fire(Rocketship player) {
