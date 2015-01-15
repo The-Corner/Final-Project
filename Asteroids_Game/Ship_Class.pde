@@ -16,11 +16,14 @@ class Rocketship {
   }  
   
   void shipDisplay() {
-    //Set rocketship location to the mouse location
+    //create a temporary coordinate system
     pushMatrix();
+    //translates the image around the center of the screen
     translate(shipLoc.x, shipLoc.y);
+    //object rotates by specified number of radians
     rotate(theta);
     image(rocketship, 0, 0, shipSZ, shipSZ);
+    //exit the temporary coordinate system
     popMatrix();
   }
 
