@@ -10,16 +10,16 @@ class Asteroids {
   hue = random(360); 
  }
  
- void Adisplay(){
+ void display(){
   fill(hue, 200, 200);
   ellipse(loc.x, loc.y, astrdSZ, astrdSZ); 
  }
  
- void Amove(){
+ void move(){
   loc.add(vel); 
  }
  
- void AwallBounce(){
+ void wallHit(){
    if(loc.x + astrdSZ/2 > width){
     vel.x = -abs(vel.x); 
    }
@@ -33,6 +33,12 @@ class Asteroids {
     vel.y = abs(vel.y); 
    }
  }
- 
+  boolean explodes(Fire bullets) {
+    if (loc.dist(bullets.loc) < sz/2 + bullets.sz/2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

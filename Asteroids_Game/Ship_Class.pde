@@ -15,7 +15,7 @@ class Rocketship {
     imageMode(CENTER);
   }  
   
-  void shipDisplay() {
+  void display() {
     //create a temporary coordinate system
     pushMatrix();
     //translates the image around the center of the screen
@@ -27,12 +27,12 @@ class Rocketship {
     popMatrix();
   }
 
-  void shipUpdate() {
+  void update() {
     if (keyPressed) {
       if (keyCode == LEFT) {
-        theta-=radians(5);
+        theta-=radians(3);
       } else if (keyCode == RIGHT) {
-        theta+=radians(5);
+        theta+=radians(3);
       }
     }
   }
