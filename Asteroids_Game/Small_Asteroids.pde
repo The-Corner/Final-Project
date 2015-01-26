@@ -1,10 +1,12 @@
 class SmallAsteroids {
+  //declare location, velocity, size and hue
   PVector loc, vel;
   float sz;
   float hue;
 
   SmallAsteroids() {
     sz = 50;
+    //initialize location, velocity, and hue
     loc = new PVector(random(width), random(height));
     vel = new PVector(random(-1.5, 1.1), random(-1.5, 1.6));
     hue = random(360);
