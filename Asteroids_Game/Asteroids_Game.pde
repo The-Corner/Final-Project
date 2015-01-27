@@ -1,3 +1,4 @@
+//github version
 //declare the integers for screen size
 int screenSZx, screenSZy;
 //initialize stages for game to go through ie: startscreen, level 1, level 2, ...
@@ -22,7 +23,7 @@ void setup() {
   screenSZx = round(displayWidth*.90);
   screenSZy = round(displayHeight*.90);
   size(screenSZx, screenSZy);
-  //loading image for background of start screen and instructions screen
+  //loading image for background of start screen, instructions screen, and game over screen
   startBG = loadImage("StartBG.jpg");
   instructions = loadImage("AsteroidsInstructions.jpg");
   gameOverBG = loadImage("gameOver.jpg");
@@ -94,18 +95,16 @@ void draw() {
       }
     }
 
+    //drawing the rocketship
     for (int r = 0; r < player.size (); r++) {
       Rocketship g = player.get(r);
-      //display the spaceship
-      g.display();
-      //Update the rotation of the rocketship every frame
-      g.update();
-      //remove the ship if hit by large asteroid
+      g.display();  //display the spaceship
+      g.update();   //Update the rotation of the rocketship every frame
+      //player loses if hit by large asteroid
       for (int i = 0; i < asteroids.size (); i++) {
         Asteroids a = asteroids.get(i);
         if (a.hitsShip(g)) {
-          //player.remove(g);
-          stage = 4;
+          stage = 4; //if a big asteroid hits the ship, stage 4 begins (game over screen)
         }
       }
       //game over if hit by small asteroid
@@ -116,14 +115,14 @@ void draw() {
         }
       }
     }
-    //drawing the asteroids
+    //drawing the big asteroids
     for (int i = 0; i < asteroids.size (); i++) {
       Asteroids a = asteroids.get(i);
       a.display();     //display the big asteroids
       a.move();        //move asteroids 
       a.wallHit();     //asteroids appear on the opposite side if they go off-screen
 
-      //removing the asteroids
+      //removing the big asteroids
       for (int j = 0; j < bullets.size (); j++) {
         Fire b = bullets.get(j);
         if (a.explodes(b)) {   //if bullet touches an asteroid
@@ -134,15 +133,15 @@ void draw() {
     }
     //continuously add big asteroids
     if (frameCount % 150 == 0) {       //if 150 frames have passed
-      asteroids.add(new Asteroids());  //a new big asteroid
+      asteroids.add(new Asteroids());  //a new big asteroid is added
     }
 
     //drawing the small asteroids
     for (int p = 0; p < smAsteroids.size (); p++) {
       SmallAsteroids s = smAsteroids.get(p); 
-      s.display(); //display the small asteroids
-      s.move(); //move small asteroids
-      s.wallHit(); //small asteroids appear on the opposite side if they go off-screen
+      s.display();  //display the small asteroids
+      s.move();     //move small asteroids
+      s.wallHit();  //small asteroids appear on the opposite side if they go off-screen
 
       //removing the small asteroids
       for (int k = 0; k < bullets.size (); k++) {
@@ -154,8 +153,8 @@ void draw() {
       }     
     }
     //continuously add small asteroids
-    if(frameCount % 150 == 0){       //if 150 frames have passed
-     asteroids.add(new Asteroids()); //a new small asteroid is drawn
+    if(frameCount % 150 == 0){              //if 150 frames have passed
+     smAsteroids.add(new SmallAsteroids()); //a new small asteroid is drawn
     }
 
     //score board

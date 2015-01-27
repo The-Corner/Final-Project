@@ -1,19 +1,22 @@
 class SmallAsteroids {
-  //declare location, velocity, size and hue
+  //declare the location, velocity, size of the small asteroids
   PVector loc, vel;
   float sz;
+  //declare variable for hue
   float hue;
 
   SmallAsteroids() {
+    //initialize the size, location, velocity, and hue
     sz = 50;
-    //initialize location, velocity, and hue
-    loc = new PVector(random(width), random(height));
+    loc = new PVector(random(width-100), random(height));
     vel = new PVector(random(-1.5, 1.1), random(-1.5, 1.6));
     hue = random(360);
   }
 
   void display() {
+    //fill the asteroids with random color
     fill(hue, 200, 200);
+    //draw a circle to represent the small asteroids
     ellipse(loc.x, loc.y, sz, sz);
     ellipse(loc.x, loc.y, sz, sz);
   }
@@ -36,9 +39,17 @@ class SmallAsteroids {
       loc.y = height;
     }
   }
-  
-   boolean explodes(Fire bullets) {
+
+  boolean explodes(Fire bullets) { //determine if a bullet is touching a small asteroid
     if (loc.dist(bullets.loc) < sz/2 + bullets.sz/2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  boolean hitsShip(Rocketship player) { //determine if a small asteroid is touching the ship
+    if (loc.dist(player.loc) < sz/2 + player.sz/2) {
       return true;
     } else {
       return false;

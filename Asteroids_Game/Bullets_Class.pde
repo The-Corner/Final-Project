@@ -3,7 +3,7 @@ class Fire {
   PVector loc, vel;
   float sz = 10;
   
-  Fire(Rocketship player )  {
+  Fire(Rocketship player)  {
     //initialize the location and velocity
     loc = player.loc.get();
     vel = PVector.fromAngle(player.theta);

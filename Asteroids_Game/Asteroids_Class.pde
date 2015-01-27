@@ -6,9 +6,9 @@ class Asteroids {
   float hue;
 
   Asteroids() {
-    sz = 100; 
-    //initialize the location, velocity, and hue of the asteroids 
-    loc = new PVector(random(width), random(height));
+    //initialize the size, location, velocity, and hue of the asteroids
+    sz = 100;  
+    loc = new PVector(random(width/4), random(height));
     vel = new PVector(random(-.5, 1.1), random(-.5, 1.1));
     hue = random(360);
   }
@@ -39,15 +39,15 @@ class Asteroids {
     }
   }
 
-  boolean explodes(Fire bullets) {
-    if (loc.dist(bullets.loc) < sz/2 + bullets.sz/2) {
+  boolean explodes(Fire bullets) { //determine if a bullet is touching an asteroid
+    if (loc.dist(bullets.loc) < sz/2 + bullets.sz/2) { 
       return true;
     } else {
       return false;
     }
   }
 
-  boolean hitsShip(Rocketship player) {
+  boolean hitsShip(Rocketship player) { //determine if an asteroid is touching the ship
     if (loc.dist(player.loc) < sz/2 + player.sz/2) {
       return true;
     } else {
